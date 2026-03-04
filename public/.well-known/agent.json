@@ -1,0 +1,44 @@
+{
+  "name": "推敲AI",
+  "description": "AI-powered日本語文章品質改善ツール。テキストを入力すると、敬語修正・読みやすさ・冗長表現削除・トーン変換・表現の豊かさ・論理構成の6カテゴリでAIが文章を分析・改善し、品質スコア（0-100）で可視化します。",
+  "url": "https://suikou.ezoai.jp",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "provider": {
+    "organization": "Ghostfee",
+    "url": "https://github.com/Michey0495"
+  },
+  "documentationUrl": "https://suikou.ezoai.jp/llms.txt",
+  "authentication": {
+    "schemes": ["none"]
+  },
+  "defaultInputModes": ["text"],
+  "defaultOutputModes": ["text"],
+  "skills": [
+    {
+      "id": "analyze-text",
+      "name": "日本語文章分析・改善",
+      "description": "日本語テキストを6カテゴリ（敬語・読みやすさ・冗長表現・トーン・表現力・論理構成）で分析し、品質スコアと改善版テキストを返します",
+      "uri": "https://suikou.ezoai.jp/api/analyze",
+      "method": "POST",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "分析対象の日本語テキスト（最大1000文字）"
+          },
+          "tone": {
+            "type": "string",
+            "enum": ["formal", "semi-casual", "casual"],
+            "description": "目標トーン（デフォルト: formal）"
+          }
+        },
+        "required": ["text"]
+      }
+    }
+  ]
+}

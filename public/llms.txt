@@ -1,0 +1,35 @@
+# 推敲AI (Suikou AI)
+
+> AI-powered日本語文章品質改善ツール
+
+## Overview
+推敲AIは、テキストを貼り付けるだけでAIが6つのカテゴリで日本語文章を分析・改善するWebアプリケーションです。
+品質スコア（0-100）で可視化し、改善前後の差分を明確に表示します。
+
+## Features
+- 6カテゴリ同時分析: 敬語修正 / 読みやすさ / 冗長表現削除 / トーン変換 / 表現の豊かさ / 論理構成
+- 品質スコア表示（0-100点、カテゴリ別内訳）
+- 改善前後のdiff表示
+- トーン選択: フォーマル / ややカジュアル / カジュアル
+- ワンクリックで改善版テキストをコピー
+
+## API
+- POST /api/analyze - テキスト分析・改善エンドポイント
+  - Body: { "text": "分析対象テキスト", "tone": "formal" | "semi-casual" | "casual" }
+  - Response: { "success": true, "result": { "overallScore": 85, "categories": [...], "improvedText": "...", "summary": "..." } }
+
+## Technical Stack
+- Framework: Next.js 15 (App Router)
+- Language: TypeScript
+- Styling: Tailwind CSS + shadcn/ui
+- AI: Anthropic Claude API
+- Hosting: Vercel
+
+## Links
+- Website: https://suikou.ezoai.jp
+- GitHub: https://github.com/Michey0495/ai-powered
+- Agent Card: https://suikou.ezoai.jp/.well-known/agent.json
+
+## Contact
+- Developer: Ghostfee
+- GitHub: https://github.com/Michey0495
