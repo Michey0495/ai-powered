@@ -58,11 +58,28 @@ export default function RootLayout({
 }>) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "推敲AI",
+    url: "https://suikou.ezoai.jp",
+    description:
+      "テキストを貼り付けるだけで、AIが敬語・読みやすさ・冗長表現・トーン・表現力・論理構成の6カテゴリで文章を改善。",
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "JPY" },
+    inLanguage: "ja",
+  };
+
   return (
     <html lang="ja">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
         <FeedbackWidget repoName="ai-powered" />
         {gaId && (

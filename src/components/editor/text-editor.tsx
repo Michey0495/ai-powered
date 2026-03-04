@@ -61,6 +61,7 @@ export function TextEditor({ onResult }: TextEditorProps) {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="改善したい文章をここに貼り付けてください..."
+          aria-label="分析対象のテキスト"
           className="min-h-[200px] bg-white/5 border-white/10 text-white placeholder:text-white/30 text-base leading-relaxed resize-none"
         />
         <div
@@ -72,12 +73,13 @@ export function TextEditor({ onResult }: TextEditorProps) {
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
+        <div className="flex gap-2" role="group" aria-label="トーン選択">
           {TONES.map((t) => (
             <button
               key={t.value}
               onClick={() => setTone(t.value)}
+              aria-pressed={tone === t.value}
               className={`px-3 py-1.5 rounded-md text-sm transition-all duration-200 cursor-pointer ${
                 tone === t.value
                   ? "bg-violet-400/20 text-violet-400 border border-violet-400/30"

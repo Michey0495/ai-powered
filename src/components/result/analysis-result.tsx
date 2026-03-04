@@ -18,7 +18,7 @@ function ScoreRing({ score }: { score: number }) {
 
   return (
     <div className="relative inline-flex items-center justify-center">
-      <svg width="100" height="100" className="-rotate-90">
+      <svg width="100" height="100" className="-rotate-90" role="img" aria-label={`品質スコア: ${score}点`}>
         <circle
           cx="50"
           cy="50"
@@ -40,7 +40,7 @@ function ScoreRing({ score }: { score: number }) {
           className="transition-all duration-1000"
         />
       </svg>
-      <span className="absolute text-2xl font-bold text-white">{score}</span>
+      <span className="absolute text-2xl font-bold text-white" aria-hidden="true">{score}</span>
     </div>
   );
 }
@@ -131,6 +131,7 @@ export function AnalysisResultView({ result }: AnalysisResultViewProps) {
             onClick={() =>
               setActiveCategory(activeCategory === cat.id ? null : cat.id)
             }
+            aria-expanded={activeCategory === cat.id}
             className="w-full text-left cursor-pointer"
           >
             <CategoryBar category={cat} />

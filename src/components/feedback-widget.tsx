@@ -44,6 +44,7 @@ export function FeedbackWidget({ repoName }: { repoName: string }) {
         <h3 className="font-bold text-white">フィードバック</h3>
         <button
           onClick={() => setOpen(false)}
+          aria-label="閉じる"
           className="text-white/40 hover:text-white/70 transition-all duration-200 cursor-pointer"
         >
           &times;
