@@ -17,6 +17,10 @@
 - POST /api/analyze - テキスト分析・改善エンドポイント
   - Body: { "text": "分析対象テキスト", "tone": "formal" | "semi-casual" | "casual" }
   - Response: { "success": true, "result": { "overallScore": 85, "categories": [...], "improvedText": "...", "summary": "..." } }
+- POST /api/mcp - MCP (Model Context Protocol) サーバーエンドポイント
+  - JSON-RPC 2.0 over HTTP
+  - Tools: analyze_text, get_score
+- POST /api/feedback - ユーザーフィードバック受付
 
 ## Technical Stack
 - Framework: Next.js 15 (App Router)

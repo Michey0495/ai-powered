@@ -39,6 +39,13 @@
         },
         "required": ["text"]
       }
+    },
+    {
+      "id": "mcp-server",
+      "name": "MCP Server",
+      "description": "Model Context Protocol互換エンドポイント。AIエージェントがツールとして接続可能",
+      "uri": "https://suikou.ezoai.jp/api/mcp",
+      "method": "POST"
     }
   ]
 }

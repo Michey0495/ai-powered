@@ -28,6 +28,8 @@ npm run dev
 | 変数名 | 説明 |
 |--------|------|
 | `ANTHROPIC_API_KEY` | Anthropic API キー |
+| `NEXT_PUBLIC_GA_ID` | Google Analytics ID (任意) |
+| `GITHUB_TOKEN` | GitHub PAT - フィードバックIssue作成用 (任意) |
 
 ## ディレクトリ構成
 
@@ -38,7 +40,9 @@ src/
 │   ├── layout.tsx            # ルートレイアウト（メタデータ）
 │   ├── sitemap.ts            # 動的サイトマップ
 │   ├── check/[category]/     # SEOランディングページ（6カテゴリ）
-│   └── api/analyze/          # 文章分析APIエンドポイント
+│   ├── api/analyze/          # 文章分析APIエンドポイント
+│   ├── api/mcp/              # MCP Serverエンドポイント
+│   └── api/feedback/         # フィードバックAPI
 ├── components/
 │   ├── editor/               # テキストエディター・入力UI
 │   ├── result/               # 分析結果表示
@@ -82,4 +86,8 @@ public/
 - [x] 結果表示UI
 - [x] SEOランディングページ
 - [x] AI公開チャネル (llms.txt, agent.json, robots.txt)
-- [ ] ビルド確認・デプロイ
+- [x] MCP Serverエンドポイント (/api/mcp)
+- [x] フィードバックAPI + ウィジェット
+- [x] Google Analytics対応
+- [x] ビルド確認
+- [ ] デプロイ
