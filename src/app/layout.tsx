@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "推敲AI - 貼るだけで、プロの文章に。",
     description:
       "AIが6カテゴリで日本語文章を分析・改善。品質スコア（0-100）で可視化。登録不要・無料。",
@@ -90,12 +90,6 @@ export default function RootLayout({
         availability: "https://schema.org/InStock",
       },
       inLanguage: "ja",
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.8",
-        ratingCount: "42",
-        bestRating: "5",
-      },
       featureList:
         "敬語修正, 読みやすさ改善, 冗長表現削除, トーン変換, 表現力向上, 論理構成チェック",
     },
