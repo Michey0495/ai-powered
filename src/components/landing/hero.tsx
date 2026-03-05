@@ -13,10 +13,17 @@ export function Hero() {
         に。
       </h1>
       <p className="text-white/60 text-lg max-w-2xl mx-auto leading-relaxed">
-        敬語の間違い、冗長な表現、読みにくい構成
+        敬語の間違い、冗長な表現、読みにくい構成 ―
         <br className="hidden md:block" />
         AIが6カテゴリで分析し、品質スコア0-100で可視化。
       </p>
+      <div className="flex items-center justify-center gap-6 pt-2 text-sm text-white/40">
+        <span>10秒で結果</span>
+        <span className="w-1 h-1 rounded-full bg-white/20" />
+        <span>登録不要</span>
+        <span className="w-1 h-1 rounded-full bg-white/20" />
+        <span>完全無料</span>
+      </div>
       <div className="flex flex-wrap justify-center gap-3 pt-4">
         {Object.values(CATEGORIES).map((cat) => (
           <Link

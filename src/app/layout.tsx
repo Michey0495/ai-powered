@@ -49,10 +49,11 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "推敲AI - 貼るだけで、プロの文章に。",
     description:
       "AIが6カテゴリで日本語文章を分析・改善。品質スコア（0-100）で可視化。登録不要・無料。",
+    creator: "@ghostfee_dev",
   },
   robots: {
     index: true,
@@ -92,6 +93,12 @@ export default function RootLayout({
       inLanguage: "ja",
       featureList:
         "敬語修正, 読みやすさ改善, 冗長表現削除, トーン変換, 表現力向上, 論理構成チェック",
+      author: {
+        "@type": "Organization",
+        name: "Ghostfee",
+        url: "https://github.com/Michey0495",
+      },
+      datePublished: "2026-03-05",
     },
     {
       "@context": "https://schema.org",
