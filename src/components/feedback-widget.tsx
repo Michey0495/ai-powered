@@ -8,14 +8,18 @@ export function FeedbackWidget({ repoName }: { repoName: string }) {
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
 
+  const [error, setError] = useState("");
+
   const submit = async () => {
     if (!message.trim()) return;
+    setError("");
     try {
-      await fetch("/api/feedback", {
+      const res = await fetch("/api/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ type, message, repo: repoName }),
       });
+      if (!res.ok) throw new Error();
       setSent(true);
       setTimeout(() => {
         setOpen(false);
@@ -23,7 +27,7 @@ export function FeedbackWidget({ repoName }: { repoName: string }) {
         setMessage("");
       }, 2000);
     } catch {
-      alert("送信に失敗しました");
+      setError("送信に失敗しました。しばらく後に再度お試しください。");
     }
   };
 
@@ -78,6 +82,9 @@ export function FeedbackWidget({ repoName }: { repoName: string }) {
             aria-label="フィードバック内容"
             className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-sm text-white h-24 resize-none mb-3 placeholder:text-white/30 focus:outline-none focus:border-violet-500/50"
           />
+          {error && (
+            <p className="text-red-400 text-xs mb-2">{error}</p>
+          )}
           <button
             onClick={submit}
             className="w-full bg-violet-600 text-white py-2 rounded-lg text-sm hover:bg-violet-700 transition-all duration-200 cursor-pointer"

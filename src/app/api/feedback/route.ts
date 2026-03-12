@@ -18,9 +18,15 @@ export async function POST(request: NextRequest) {
 
   const token = process.env.GITHUB_TOKEN;
 
-  if (token) {
-    try {
-      await fetch(`https://api.github.com/repos/Michey0495/${repo}/issues`, {
+  if (!token) {
+    console.warn("GITHUB_TOKEN not set, feedback not saved to GitHub");
+    return NextResponse.json({ ok: true, saved: false });
+  }
+
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/Michey0495/${encodeURIComponent(repo)}/issues`,
+      {
         method: "POST",
         headers: {
           Authorization: `token ${token}`,
@@ -31,11 +37,22 @@ export async function POST(request: NextRequest) {
           body,
           labels: [labels[type] || "feedback"],
         }),
-      });
-    } catch (e) {
-      console.error("Failed to create GitHub issue:", e);
+      }
+    );
+    if (!res.ok) {
+      console.error("GitHub API error:", res.status, await res.text());
+      return NextResponse.json(
+        { error: "Failed to save feedback" },
+        { status: 502 }
+      );
     }
+  } catch (e) {
+    console.error("Failed to create GitHub issue:", e);
+    return NextResponse.json(
+      { error: "Failed to save feedback" },
+      { status: 502 }
+    );
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, saved: true });
 }

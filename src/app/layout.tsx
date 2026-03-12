@@ -99,6 +99,7 @@ export default function RootLayout({
         url: "https://github.com/Michey0495",
       },
       datePublished: "2026-03-05",
+      dateModified: new Date().toISOString().split("T")[0],
     },
     {
       "@context": "https://schema.org",
